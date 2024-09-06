@@ -1,0 +1,32 @@
+# Text-Based Adventure Game in Python
+
+# Define valid answers for yes and no
+answer_yes = ["Yes", "Y", "yes", "y"]
+answer_no = ["No", "N", "no", "n"]
+
+print("WELCOME! LET'S START THE ADVENTURE")
+print("You are standing outside of your house, and you see a man running towards you, asking for urgent shelter.")
+print("Will you provide shelter to him? (Yes / No)")
+
+ans1 = input(">> ")
+
+if ans1 in answer_yes:
+    print("\nAfter 2 minutes, the police come to your house and ask whether the thief is inside or not.")
+    print("Will you say (Yes / No)\n")
+    ans2 = input(">> ")
+    if ans2 in answer_yes:
+        print("\nYou are an honest person. He was a thief, and you won the game!")
+    elif ans2 in answer_no:
+        print("\nYou helped a thief. Game over.")
+else:
+    print("\nThe man attacks you. Now you have two options:")
+    print("1. Knock him down")
+    print("2. Do nothing")
+
+    ans3 = input(">> ")
+    if ans3 == "1":
+        print("\nYou knock him down. You win!")
+    else:
+        print("\nHe kills you. Game over.")
+
+print("\nThanks for playing! Feel free to create more adventures.")
