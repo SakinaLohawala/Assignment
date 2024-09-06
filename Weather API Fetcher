@@ -1,0 +1,24 @@
+# Weather API Fetcher
+import requests
+
+api_key = "Your_API_Key"
+base_url = "http://api.openweathermap.org/data/2.5/weather?"
+city_name = input("Enter city name: ")
+
+complete_url = base_url + f"appid={api_key}&q={city_name}"
+response = requests.get(complete_url)
+weather_data = response.json()
+
+if weather_data["cod"] != "404":
+    main_info = weather_data["main"]
+    current_temperature = main_info["temp"]
+    current_pressure = main_info["pressure"]
+    current_humidity = main_info["humidity"]
+    weather_description = weather_data["weather"][0]["description"]
+
+    print(f"Temperature (in Kelvin): {current_temperature}")
+    print(f"Atmospheric pressure (in hPa): {current_pressure}")
+    print(f"Humidity (in percentage): {current_humidity}")
+    print(f"Description: {weather_description}")
+else:
+    print("City not found.")
