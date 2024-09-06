@@ -1,0 +1,45 @@
+# Simple Personal Budget Tracker
+class BudgetTracker:
+    def __init__(self):
+        self.income = 0
+        self.expenses = 0
+        self.income_sources = {}
+        self.expense_categories = {}
+
+    def add_income(self, source, amount):
+        self.income_sources[source] = amount
+        self.income += amount
+
+    def add_expense(self, category, amount):
+        self.expense_categories[category] = amount
+        self.expenses += amount
+
+    def display_summary(self):
+        print("\nBudget Summary:")
+        print(f"Total Income: ${self.income}")
+        print(f"Total Expenses: ${self.expenses}")
+        balance = self.income - self.expenses
+        if balance < 0:
+            print(f"Deficit: ${balance}")
+        elif balance == 0:
+            print("Break-even: You're spending exactly as much as you make.")
+        else:
+            print(f"Surplus: ${balance}")
+
+if __name__ == "__main__":
+    budget = BudgetTracker()
+
+    while True:
+        choice = input("Do you want to add income or expenses? (income/expenses/quit): ")
+        if choice.lower() == "quit":
+            break
+        elif choice.lower() == "income":
+            source = input("Enter income source: ")
+            amount = float(input("Enter income amount: "))
+            budget.add_income(source, amount)
+        elif choice.lower() == "expenses":
+            category = input("Enter expense category: ")
+            amount = float(input("Enter expense amount: "))
+            budget.add_expense(category, amount)
+
+    budget.display_summary()
